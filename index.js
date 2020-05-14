@@ -16,12 +16,14 @@ lib.preFlow(async function(err, results) {
   program
     .usage("[command] [options]")
     .version(pkg.version)
-    .option('-t, --theme <theme name>', 'Specify theme used by `export` (modern, crisp, flat: default)', 'flat')
+    .option('-t, --theme <theme name>', 'Specify theme used by `export` (modern, crisp, flat: default). Use local for local theme.', 'flat')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-r, --resume <resume filename>', 'Used by `serve` (default: resume.json)', path.join(process.cwd(), 'resume.json'))
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false)
-    .option('-d, --dir <path>', 'Used by `serve` to indicate a public directory path.', 'public');
+    .option('-d, --dir <path>', 'Used by `serve` to indicate a public directory path.', 'public')
+    .option('-F, --force', 'Used by `publish` and `export` - bypasses schema testing.')
+  ;
 
   program
     .command('init')
